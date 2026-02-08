@@ -7,7 +7,6 @@ from pathlib import Path
 from datetime import datetime
 import streamlit as st
 import requests
-from loguru import logger
 
 # Configure page
 st.set_page_config(

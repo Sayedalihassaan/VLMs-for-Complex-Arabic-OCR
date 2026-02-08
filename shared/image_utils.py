@@ -8,7 +8,7 @@ from PIL import Image, ImageEnhance
 from pdf2image import convert_from_path
 from loguru import logger
 
-from shared.config import settings
+from .config import settings
 
 
 def image_to_base64_data_uri(image_path: Union[str, Path]) -> str:

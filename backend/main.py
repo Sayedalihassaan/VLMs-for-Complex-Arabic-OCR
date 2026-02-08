@@ -1,11 +1,15 @@
 """
 FastAPI backend for Document Analyzer.
 """
+import sys
 import uuid
 import shutil
 from pathlib import Path
 from typing import List, Optional
 from datetime import datetime
+
+# Add project root to path to allow imports from shared module
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware

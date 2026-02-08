@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from typing import List
 from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic import Field, ConfigDict
 
 
 class Settings(BaseSettings):
@@ -18,7 +18,7 @@ class Settings(BaseSettings):
         env="OPENAI_BASE_URL"
     )
     model_id: str = Field(
-        default="google/gemini-3-flash-preview",
+        default="openrouter/google/gemini-3-flash-preview",
         env="MODEL_ID"
     )
     max_tokens: int = Field(default=4096, env="MAX_TOKENS")
@@ -48,10 +48,12 @@ class Settings(BaseSettings):
     # Logging
     log_level: str = Field(default="INFO", env="LOG_LEVEL")
     
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        case_sensitive = False
+    model_config = ConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        protected_namespaces=('settings_',)
+    )
     
     @property
     def allowed_extensions_list(self) -> List[str]:

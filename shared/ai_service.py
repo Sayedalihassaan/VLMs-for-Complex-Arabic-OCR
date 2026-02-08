@@ -7,9 +7,9 @@ from typing import Dict, Any, List, Union
 from litellm import completion
 from loguru import logger
 
-from shared.config import settings
-from shared.prompts import get_extraction_prompt
-from shared.image_utils import image_to_base64_data_uri
+from .config import settings
+from .prompts import get_extraction_prompt
+from .image_utils import image_to_base64_data_uri
 
 
 class DocumentAnalyzer:
